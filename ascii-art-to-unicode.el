@@ -228,7 +228,7 @@ Their values are STRINGIFIER and COMPONENTS, respectively."
 ;;; command
 
 ;;;###autoload
-(defun aa2u ()
+(defun aa2u (beg end)
   "Convert simple ASCII art line drawings to Unicode.
 Specifically, perform the following replacements:
 
@@ -254,20 +254,16 @@ More precisely, hyphen and vertical bar are substituted unconditionally,
 first, and plus is substituted with a character depending on its north,
 south, east and west neighbors.
 
-This command operates on either the active region, as per
-`use-region-p', or the accessible portion otherwise."
-  (interactive)
+This command operates on either the active region,
+or the accessible portion otherwise."
+  (interactive "r")
   (save-excursion
-    (cl-flet
-        ((do-it! () (aa2u-phase-1) (aa2u-phase-2) (aa2u-phase-3)))
-      (if (use-region-p)
-          (let ((beg (region-beginning))
-                (end (region-end)))
-            (save-restriction
-              (widen)
-              (narrow-to-region beg end)
-              (do-it!)))
-        (do-it!)))))
+    (save-restriction
+      (widen)
+      (narrow-to-region beg end)
+      (aa2u-phase-1)
+      (aa2u-phase-2)
+      (aa2u-phase-3))))
 
 ;;;---------------------------------------------------------------------------
 ;;; that's it
