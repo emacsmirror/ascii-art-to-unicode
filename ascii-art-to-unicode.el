@@ -3,7 +3,7 @@
 ;; Copyright (C) 2014  Free Software Foundation, Inc.
 
 ;; Author: Thien-Thi Nguyen <ttn@gnu.org>
-;; Version: 1.4
+;; Version: 1.5
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -64,6 +64,9 @@
 
 ;;; News:
 
+;; - 1.5 | 2014-04-03
+;;   - ‘aa2u’ takes args BEG and END
+;;
 ;; - 1.4 | 2014-01-14
 ;;   - move to ELPA (from <http://www.gnuvola.org/software/j/aa2u/>)
 ;;   - change copyright to FSF
