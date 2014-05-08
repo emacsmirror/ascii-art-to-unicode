@@ -231,7 +231,7 @@ Their values are STRINGIFIER and COMPONENTS, respectively."
 ;;; command
 
 ;;;###autoload
-(defun aa2u (beg end)
+(defun aa2u (beg end &optional interactive)
   "Convert simple ASCII art line drawings to Unicode.
 Specifically, perform the following replacements:
 
@@ -259,7 +259,15 @@ south, east and west neighbors.
 
 This command operates on either the active region,
 or the accessible portion otherwise."
-  (interactive "r")
+  (interactive "r\np")
+  ;; This weirdness, along w/ the undocumented "p" in the ‘interactive’
+  ;; form, is to allow ‘M-x aa2u’ (interactive invocation) w/ no region
+  ;; selected to default to the accessible portion (as documented), which
+  ;; was the norm in ascii-art-to-unicode.el prior to 1.5.  A bugfix,
+  ;; essentially.  This is ugly, unfortunately -- is there a better way?!
+  (when (and interactive (not (region-active-p)))
+    (setq beg (point-min)
+          end (point-max)))
   (save-excursion
     (save-restriction
       (widen)
