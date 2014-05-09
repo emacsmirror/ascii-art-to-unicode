@@ -83,7 +83,7 @@
 (require 'cl-lib)
 (require 'pcase)
 
-(defvar aa2u-uniform-weight 'HEAVY
+(defvar aa2u-uniform-weight 'LIGHT
   "A symbol, either `LIGHT' or `HEAVY'.
 This specifies the weight of all the lines.")
 

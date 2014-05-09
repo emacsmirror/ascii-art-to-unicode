@@ -2,6 +2,9 @@ NEWS for ascii-art-to-unicode.el
 See the end for copying conditions.
 
 
+- 1.7 | NOT YET RELEASED
+  - new var: ‘aa2u-uniform-weight’
+
 - 1.6 | 2014-05-09
   - fix regression for interactive invocation w/o active region
 
