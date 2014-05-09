@@ -124,7 +124,7 @@ Their values are STRINGIFIER and COMPONENTS, respectively."
 
 (defun aa2u-replacement (pos)
   (let ((cc (- pos (line-beginning-position))))
-    (cl-labels
+    (cl-flet*
         ((ok (name pos)
              (when (or
                     ;; Infer LIGHTness between "snug" ‘?+’es.
