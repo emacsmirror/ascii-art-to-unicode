@@ -61,6 +61,7 @@
 ;;
 ;; See Also
 ;; - HACKING: <http://git.sv.gnu.org/cgit/emacs/elpa.git/tree/packages/ascii-art-to-unicode/HACKING>
+;; - Tip Jar: <http://www.gnuvola.org/software/aa2u/>
 
 ;;; Code:
 
