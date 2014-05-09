@@ -6,7 +6,7 @@ This file is both a guide for newcomers and a todo list for oldstayers.
 *** add phase 0, to grok and lock label (as opposed to line) text
 *** add interactive mode, to choose per-line light vs heavy
 *** improve neighbor-determining heuristic
-*** choose plus-replacement by composing "VERTICAL", "LEFT", etc.
+*** support "naked" line terminal (no plus)
 * etc
 #+odd
 
