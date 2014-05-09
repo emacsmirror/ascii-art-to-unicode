@@ -1,0 +1,17 @@
+HACKING ascii-art-to-unicode.el                            -*- org -*-
+
+This file is both a guide for newcomers and a todo list for oldstayers.
+
+* ideas / wishlist
+*** add phase 0, to grok and lock label (as opposed to line) text
+*** add interactive mode, to choose per-line light vs heavy
+*** improve neighbor-determining heuristic
+*** choose plus-replacement by composing "VERTICAL", "LEFT", etc.
+* etc
+#+odd
+
+
+Copyright (C) 2014  Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted provided the copyright notice and this notice are preserved.

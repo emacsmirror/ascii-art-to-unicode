@@ -56,41 +56,11 @@
 ;;           │          │
 ;;           └──────────┘
 ;;
-;; TODO:
-;; - Add phase 0, to grok and lock label (as opposed to line) text.
-;; - Add interactive mode, to choose per-line light vs heavy.
-;; - Improve neighbor-determining heuristic.
-;; - Choose plus-replacement by composing "VERTICAL", "LEFT", etc.
-
-;;; News:
-
-;; - 1.5 | 2014-04-03
-;;   - ‘aa2u’ takes args BEG and END
+;; Much easier on the eyes now!
 ;;
-;; - 1.4 | 2014-01-14
-;;   - move to ELPA (from <http://www.gnuvola.org/software/j/aa2u/>)
-;;   - change copyright to FSF
-;;   - require 'cl-lib instead of 'cl
-;;   - use ‘cl-flet’ and ‘cl-labels’
-;;   - comment munging
-;;     - add ‘lexical-binding: t’
-;;     - remove huge list at EOF
-;;     - add Author and News headers
 ;;
-;; - 1.3 | 2013-09-21
-;;   - bug fixed: ‘?+’ neighbor valuation polarity flipped
-;;   - new support for BOX DRAWINGS LIGHT {UP,DOWN,LEFT,RIGHT} (singleton)
-;;
-;; - 1.2 | 2012-11-05
-;;   - refer to Unicode characters by name, not number
-;;
-;; - 1.1 | 2012-04-17
-;;   - TAB agnostic
-;;   - ‘aa2u’ operates on active region if ‘use-region-p’
-;;   - example use case also demonstrates transformation
-;;
-;; - 1.0 | 2012-04-07
-;;   - initial release
+;; See Also
+;; - HACKING: <http://git.sv.gnu.org/cgit/emacs/elpa.git/tree/packages/ascii-art-to-unicode/HACKING>
 
 ;;; Code:
 
