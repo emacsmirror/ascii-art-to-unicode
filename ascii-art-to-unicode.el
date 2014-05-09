@@ -58,6 +58,21 @@
 ;;
 ;; Much easier on the eyes now!
 ;;
+;; Normally, lines are drawn with the `LIGHT' weight.  If you set var
+;; `aa2u-uniform-weight' to symbol `HEAVY', you will see, instead:
+;;
+;;   ┏━━━━━━━━━━━━━━━┓
+;;   ┃               ┃
+;;   ┃       ┏━━━━━━━╋━━┓
+;;   ┃       ┃       ┃  ┃
+;;   ┃       ┃       ┃  ┃
+;;   ┃       ┃       ┃  ┃
+;;   ┗━━━━━━━╋━━━━━━━┛  ┃
+;;           ┃          ┃
+;;           ┃          ┃
+;;           ┃          ┃
+;;           ┗━━━━━━━━━━┛
+;;
 ;;
 ;; See Also
 ;; - HACKING: <http://git.sv.gnu.org/cgit/emacs/elpa.git/tree/packages/ascii-art-to-unicode/HACKING>
@@ -68,18 +83,18 @@
 (require 'cl-lib)
 (require 'pcase)
 
+(defvar aa2u-uniform-weight 'HEAVY
+  "A symbol, either `LIGHT' or `HEAVY'.
+This specifies the weight of all the lines.")
+
 ;;;---------------------------------------------------------------------------
 ;;; support
 
-(defun aa2u-ucs-bd-uniform-name (weight &rest components)
+(defun aa2u-ucs-bd-uniform-name (&rest components)
   "Return a string naming UCS char w/ WEIGHT and COMPONENTS.
-The string begins with \"BOX DRAWINGS\"; followed by WEIGHT,
-a symbol from the set:
-
-  HEAVY
-  LIGHT
-
-followed by COMPONENTS, a list of one or two symbols from the set:
+The string begins with \"BOX DRAWINGS\"; followed by the weight
+as per variable `aa2u-uniform-weight', followed by COMPONENTS,
+a list of one or two symbols from the set:
 
   VERTICAL
   HORIZONTAL
@@ -94,7 +109,7 @@ string includes \"AND\" between the elements of COMPONENTS.
 
 Lastly, all words are separated by space (U+20)."
   (format "BOX DRAWINGS %s %s"
-          weight
+          aa2u-uniform-weight
           (mapconcat 'symbol-name components
                      " AND ")))
 
@@ -114,11 +129,11 @@ Their values are STRINGIFIER and COMPONENTS, respectively."
 
 (defun aa2u-phase-1 ()
   (goto-char (point-min))
-  (let ((vert (aa2u-1c 'aa2u-ucs-bd-uniform-name 'LIGHT 'VERTICAL)))
+  (let ((vert (aa2u-1c 'aa2u-ucs-bd-uniform-name 'VERTICAL)))
     (while (search-forward "|" nil t)
       (replace-match vert t t)))
   (goto-char (point-min))
-  (let ((horz (aa2u-1c 'aa2u-ucs-bd-uniform-name 'LIGHT 'HORIZONTAL)))
+  (let ((horz (aa2u-1c 'aa2u-ucs-bd-uniform-name 'HORIZONTAL)))
     (while (search-forward "-" nil t)
       (replace-match horz t t))))
 
@@ -155,7 +170,6 @@ Their values are STRINGIFIER and COMPONENTS, respectively."
          (just (&rest args) (delq nil args)))
       (apply 'aa2u-1c
              'aa2u-ucs-bd-uniform-name
-             'LIGHT
              (just (pcase (just (v 'UP   0)
                                 (v 'DOWN 2))
                      ((pred two-p) 'VERTICAL)
@@ -220,6 +234,9 @@ Specifically, perform the following replacements:
 More precisely, hyphen and vertical bar are substituted unconditionally,
 first, and plus is substituted with a character depending on its north,
 south, east and west neighbors.
+
+NB: Actually, `aa2u' can also use \"HEAVY\" instead of \"LIGHT\",
+depending on the value of variable `aa2u-uniform-weight'.
 
 This command operates on either the active region,
 or the accessible portion otherwise."
