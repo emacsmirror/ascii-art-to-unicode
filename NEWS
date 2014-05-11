@@ -2,9 +2,10 @@ NEWS for ascii-art-to-unicode.el
 See the end for copying conditions.
 
 
-- 1.7 | NOT YET RELEASED
+- 1.7 | 2014-05-11
   - new var: ‘aa2u-uniform-weight’
   - new command: ‘aa2u-rectangle’
+  - HACKING and Tip Jar links in Commentary
 
 - 1.6 | 2014-05-09
   - fix regression for interactive invocation w/o active region
