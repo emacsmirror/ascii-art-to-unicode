@@ -22,6 +22,7 @@
 
 ;; The command `aa2u' converts simple ASCII art line drawings in
 ;; the {active,accessible} region of the current buffer to Unicode.
+;; Command `aa2u-rectangle' is like `aa2u', but works on rectangles.
 ;;
 ;; Example use case:
 ;; - M-x artist-mode RET
@@ -206,7 +207,7 @@ Their values are STRINGIFIER and COMPONENTS, respectively."
                                 'aa2u-components nil)))
 
 ;;;---------------------------------------------------------------------------
-;;; command
+;;; commands
 
 ;;;###autoload
 (defun aa2u (beg end &optional interactive)
@@ -256,6 +257,20 @@ or the accessible portion otherwise."
       (aa2u-phase-1)
       (aa2u-phase-2)
       (aa2u-phase-3))))
+
+;;;###autoload
+(defun aa2u-rectangle (start end)
+  "Like `aa2u' on the region-rectangle.
+When called from a program the rectangle's corners
+are START (top left) and END (bottom right)."
+  (interactive "r")
+  (let* ((was (delete-extract-rectangle start end))
+         (now (with-temp-buffer
+                (insert-rectangle was)
+                (aa2u (point) (mark))
+                (extract-rectangle (point-min) (point-max)))))
+    (goto-char (min start end))
+    (insert-rectangle now)))
 
 ;;;---------------------------------------------------------------------------
 ;;; that's it
