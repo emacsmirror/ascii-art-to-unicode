@@ -151,7 +151,7 @@ Their values are STRINGIFIER and COMPONENTS, respectively."
                     ;;              |      +---|
                     (eq ?+ (char-after pos))
                     ;; Require properly directional neighborliness.
-                    (memq (case name
+                    (memq (cl-case name
                             ((UP DOWN)    'VERTICAL)
                             ((LEFT RIGHT) 'HORIZONTAL))
                           (get-text-property pos 'aa2u-components)))
