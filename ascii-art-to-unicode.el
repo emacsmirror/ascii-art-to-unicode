@@ -5,6 +5,7 @@
 ;; Author: Thien-Thi Nguyen <ttn@gnu.org>
 ;; Maintainer: Thien-Thi Nguyen <ttn@gnu.org>
 ;; Version: 1.7
+;; Keywords: ascii, unicode, box-drawing
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
