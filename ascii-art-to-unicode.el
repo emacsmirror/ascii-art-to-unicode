@@ -76,6 +76,22 @@
 ;;           ┃          ┃
 ;;           ┗━━━━━━━━━━┛
 ;;
+;; To protect particular ‘|’, ‘-’ or ‘+’ characters from conversion,
+;; you can set the property `aa2u-text' on that text with command
+;; `aa2u-mark-as-text'.  A prefix arg clears the property, instead.
+;; (You can use `describe-text-properties' to check.)  For example:
+;;
+;;
+;;      ┌───────────────────┐
+;;      │                   │
+;;      │ |\/|              │
+;;      │ `Oo'   --Oop Ack! │
+;;      │  ^&-MM.           │
+;;      │                   │
+;;      └─────────┬─────────┘
+;;                │
+;;            """""""""
+;;
 ;;
 ;; See Also
 ;; - HACKING: <http://git.sv.gnu.org/cgit/emacs/elpa.git/tree/packages/ascii-art-to-unicode/HACKING>
@@ -92,6 +108,9 @@ This specifies the weight of all the lines.")
 
 ;;;---------------------------------------------------------------------------
 ;;; support
+
+(defsubst aa2u--text-p (pos)
+  (get-text-property pos 'aa2u-text))
 
 (defun aa2u-ucs-bd-uniform-name (&rest components)
   "Return a string naming UCS char w/ WEIGHT and COMPONENTS.
@@ -136,7 +155,8 @@ Their values are STRINGIFIER and COMPONENTS, respectively."
             (goto-char (point-min))
             (let ((now (aa2u-1c 'aa2u-ucs-bd-uniform-name name)))
               (while (search-forward was nil t)
-                (replace-match now t t)))))
+                (unless (aa2u--text-p (match-beginning 0))
+                  (replace-match now t t))))))
     (gsr "|" 'VERTICAL)
     (gsr "-" 'HORIZONTAL)))
 
@@ -194,9 +214,10 @@ Their values are STRINGIFIER and COMPONENTS, respectively."
     ;; ‘memq’ to an ‘intersction’.
     (while (search-forward "+" nil t)
       (let ((p (point)))
-        (push (cons p (or (aa2u-replacement (1- p))
-                          "?"))
-              changes)))
+        (unless (aa2u--text-p (1- p))
+          (push (cons p (or (aa2u-replacement (1- p))
+                            "?"))
+                changes))))
     ;; (phase 2.2 -- apply changes)
     (dolist (ch changes)
       (goto-char (car ch))
@@ -273,6 +294,19 @@ are START (top left) and END (bottom right)."
                 (extract-rectangle (point-min) (point-max)))))
     (goto-char (min start end))
     (insert-rectangle now)))
+
+;;;###autoload
+(defun aa2u-mark-as-text (start end &optional unmark)
+  "Set property `aa2u-text' of the text from START to END.
+This prevents `aa2u' from misinterpreting \"|\", \"-\" and \"+\"
+in that region as lines and intersections to be replaced.
+Prefix arg means to remove property `aa2u-text', instead."
+  (interactive "r\nP")
+  (funcall (if unmark
+               'remove-text-properties
+             'add-text-properties)
+           start end
+           '(aa2u-text t)))
 
 ;;;---------------------------------------------------------------------------
 ;;; that's it

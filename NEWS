@@ -2,6 +2,9 @@ NEWS for ascii-art-to-unicode.el
 See the end for copying conditions.
 
 
+- 1.8 | NOT YET RELEASED
+  - new command: ‘aa2u-mark-as-text’
+
 - 1.7 | 2014-05-11
   - new var: ‘aa2u-uniform-weight’
   - new command: ‘aa2u-rectangle’
