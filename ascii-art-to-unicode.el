@@ -131,14 +131,14 @@ Their values are STRINGIFIER and COMPONENTS, respectively."
                 'aa2u-components components)))
 
 (defun aa2u-phase-1 ()
-  (goto-char (point-min))
-  (let ((vert (aa2u-1c 'aa2u-ucs-bd-uniform-name 'VERTICAL)))
-    (while (search-forward "|" nil t)
-      (replace-match vert t t)))
-  (goto-char (point-min))
-  (let ((horz (aa2u-1c 'aa2u-ucs-bd-uniform-name 'HORIZONTAL)))
-    (while (search-forward "-" nil t)
-      (replace-match horz t t))))
+  (cl-flet
+      ((gsr (was name)
+            (goto-char (point-min))
+            (let ((now (aa2u-1c 'aa2u-ucs-bd-uniform-name name)))
+              (while (search-forward was nil t)
+                (replace-match now t t)))))
+    (gsr "|" 'VERTICAL)
+    (gsr "-" 'HORIZONTAL)))
 
 (defun aa2u-replacement (pos)
   (let ((cc (- pos (line-beginning-position))))
