@@ -3,6 +3,7 @@ HACKING ascii-art-to-unicode.el                            -*- org -*-
 This file is both a guide for newcomers and a todo list for oldstayers.
 
 * ideas / wishlist
+*** DTRT in the presence of tab (U+09) characters
 *** add interactive mode, to choose per-line light vs heavy
 *** improve neighbor-determining heuristic
 *** support "naked" line terminal (no plus)
