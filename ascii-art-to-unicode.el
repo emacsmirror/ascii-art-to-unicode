@@ -6,6 +6,7 @@
 ;; Maintainer: Thien-Thi Nguyen <ttn@gnu.org>
 ;; Version: 1.8
 ;; Keywords: ascii, unicode, box-drawing
+;; URL: http://www.gnuvola.org/software/aa2u/
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -92,11 +93,6 @@
 ;;            """""""""
 ;;
 ;; Command `aa2u-mark-rectangle-as-text' is similar, for rectangles.
-;;
-;;
-;; See Also
-;; - HACKING: <http://git.sv.gnu.org/cgit/emacs/elpa.git/tree/packages/ascii-art-to-unicode/HACKING>
-;; - Tip Jar: <http://www.gnuvola.org/software/aa2u/>
 
 ;;; Code:
 
