@@ -2,7 +2,7 @@ NEWS for ascii-art-to-unicode.el
 See the end for copying conditions.
 
 
-- 1.9 | NOT YET RELEASED
+- 1.9 | 2014-05-29
   - new command: ‘aa2u-mark-rectangle-as-text’
   - new homepage: http://www.gnuvola.org/software/aa2u/
 

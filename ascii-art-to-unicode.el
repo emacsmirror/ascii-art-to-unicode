@@ -4,7 +4,7 @@
 
 ;; Author: Thien-Thi Nguyen <ttn@gnu.org>
 ;; Maintainer: Thien-Thi Nguyen <ttn@gnu.org>
-;; Version: 1.8
+;; Version: 1.9
 ;; Keywords: ascii, unicode, box-drawing
 ;; URL: http://www.gnuvola.org/software/aa2u/
 
