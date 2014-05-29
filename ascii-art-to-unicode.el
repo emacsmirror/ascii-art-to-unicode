@@ -81,7 +81,6 @@
 ;; `aa2u-mark-as-text'.  A prefix arg clears the property, instead.
 ;; (You can use `describe-text-properties' to check.)  For example:
 ;;
-;;
 ;;      ┌───────────────────┐
 ;;      │                   │
 ;;      │ |\/|              │
@@ -92,6 +91,8 @@
 ;;                │
 ;;            """""""""
 ;;
+;; Command `aa2u-mark-rectangle-as-text' is similar, for rectangles.
+;;
 ;;
 ;; See Also
 ;; - HACKING: <http://git.sv.gnu.org/cgit/emacs/elpa.git/tree/packages/ascii-art-to-unicode/HACKING>
@@ -101,6 +102,8 @@
 
 (require 'cl-lib)
 (require 'pcase)
+
+(autoload 'apply-on-rectangle "rect")
 
 (defvar aa2u-uniform-weight 'LIGHT
   "A symbol, either `LIGHT' or `HEAVY'.
@@ -307,6 +310,19 @@ Prefix arg means to remove property `aa2u-text', instead."
              'add-text-properties)
            start end
            '(aa2u-text t)))
+
+;;;###autoload
+(defun aa2u-mark-rectangle-as-text (start end &optional unmark)
+  "Like `aa2u-mark-as-text' on the region-rectangle.
+When called from a program the rectangle's corners
+are START (top left) and END (bottom right)."
+  (interactive "r\nP")
+  (apply-on-rectangle
+   (lambda (scol ecol unmark)
+     (let ((p (point)))
+       (aa2u-mark-as-text (+ p scol) (+ p ecol) unmark)))
+   start end
+   unmark))
 
 ;;;---------------------------------------------------------------------------
 ;;; that's it

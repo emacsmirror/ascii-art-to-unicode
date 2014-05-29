@@ -2,6 +2,9 @@ NEWS for ascii-art-to-unicode.el
 See the end for copying conditions.
 
 
+- 1.9 | NOT YET RELEASED
+  - new command: ‘aa2u-mark-rectangle-as-text’
+
 - 1.8 | 2014-05-21
   - new command: ‘aa2u-mark-as-text’
   - package keywords added (to help discovery)
