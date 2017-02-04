@@ -7,6 +7,9 @@ This file is both a guide for newcomers and a todo list for oldstayers.
 *** add interactive mode, to choose per-line light vs heavy
 *** improve neighbor-determining heuristic
 *** support "naked" line terminal (no plus)
+* copyright policy
+*** update every year, unconditionally
+*** (if (< 2 (- END BEGIN)) RANGE INDIVIDUAL)
 * etc
 #+odd
 
