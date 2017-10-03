@@ -111,6 +111,14 @@ This specifies the weight of all the lines.")
 ;;;---------------------------------------------------------------------------
 ;;; support
 
+(defalias 'aa2u--lookup
+  ;; Keep some slack: don't ‘eval-when-compile’ here.
+  (if (hash-table-p (ucs-names))
+      ;; Emacs 26 and later
+      #'gethash
+    ;; prior to Emacs 26
+    #'assoc-string))
+
 (defsubst aa2u--text-p (pos)
   (get-text-property pos 'aa2u-text))
 
@@ -145,7 +153,7 @@ The char is a string (of length one), with two properties:
   aa2u-components
 
 Their values are STRINGIFIER and COMPONENTS, respectively."
-  (let ((s (string (cdr (assoc-string (apply stringifier components)
+  (let ((s (string (cdr (aa2u--lookup (apply stringifier components)
                                       (ucs-names))))))
     (propertize s
                 'aa2u-stringifier stringifier
