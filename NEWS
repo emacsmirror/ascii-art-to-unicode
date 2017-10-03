@@ -2,6 +2,9 @@ NEWS for ascii-art-to-unicode.el
 See the end for copying conditions.
 
 
+- 1.11 | 2017-10-03
+  - fix uncool attempt to be cool :-/
+
 - 1.10 | 2017-10-03
   - be cool w/ Emacs where (ucs-names) => hash table
 
