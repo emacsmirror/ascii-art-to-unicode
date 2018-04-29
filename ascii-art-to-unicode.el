@@ -105,7 +105,7 @@
 (autoload 'apply-on-rectangle "rect")
 
 (defvar aa2u-uniform-weight 'LIGHT
-  "A symbol, either ‘LIGHT’ or ‘HEAVY’.
+  "A symbol, one of: ‘LIGHT’, ‘HEAVY’, ‘DOUBLE’.
 This specifies the weight of all the lines.")
 
 ;;;---------------------------------------------------------------------------
