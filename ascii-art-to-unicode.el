@@ -124,7 +124,7 @@ This specifies the weight of all the lines.")
   (get-text-property pos 'aa2u-text))
 
 (defun aa2u-ucs-bd-uniform-name (&rest components)
-  "Return a string naming UCS char w/ WEIGHT and COMPONENTS.
+  "Return the name of the UCS box-drawing char w/ COMPONENTS.
 The string begins with \"BOX DRAWINGS\"; followed by the weight
 as per variable ‘aa2u-uniform-weight’, followed by COMPONENTS,
 a list of one or two symbols from the set:
