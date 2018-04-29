@@ -2,6 +2,11 @@ NEWS for ascii-art-to-unicode.el
 See the end for copying conditions.
 
 
+- 1.12 | 2018-04-29
+  - Commentary, docstrings now use U+2018, U+2019
+  - mention ‘DOUBLE’ as possible value for ‘aa2u-uniform-weight’
+  - small docfixes
+
 - 1.11 | 2017-10-03
   - fix uncool attempt to be cool :-/
 
