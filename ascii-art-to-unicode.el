@@ -154,8 +154,13 @@ The char is a string (of length one), with two properties:
   aa2u-components
 
 Their values are STRINGIFIER and COMPONENTS, respectively."
-  (let ((s (string (aa2u--lookup-char (apply stringifier components)
-                                      (ucs-names)))))
+  (let* ((store (ucs-names))
+         (key (apply stringifier components))
+         (s (string (if (hash-table-p store)
+                        ;; modern: hash table
+                        (gethash key store)
+                      ;; classic: alist
+                      (cdr (assoc-string key store))))))
     (propertize s
                 'aa2u-stringifier stringifier
                 'aa2u-components components)))
