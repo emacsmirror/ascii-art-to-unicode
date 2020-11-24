@@ -2,6 +2,9 @@ NEWS for ascii-art-to-unicode.el
 See the end for copying conditions.
 
 
+- 1.13 | 2020-11-24
+  - handle modern ‘ucs-names’ being a hash table
+
 - 1.12 | 2018-04-29
   - Commentary, docstrings now use U+2018, U+2019
   - mention ‘DOUBLE’ as possible value for ‘aa2u-uniform-weight’
