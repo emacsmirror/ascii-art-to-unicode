@@ -94,7 +94,7 @@
 ;;
 ;; Command ‘aa2u-mark-rectangle-as-text’ is similar, for rectangles.
 ;;
-;; Tip: For best results, you should make sure all the tab characaters
+;; Tip: For best results, you should make sure all the tab characters
 ;; are converted to spaces.  See: ‘untabify’, ‘indent-tabs-mode’.
 
 ;;; Code:
