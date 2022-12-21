@@ -18,7 +18,7 @@ See the end for copying conditions.
 
 - 1.9 | 2014-05-29
   - new command: ‘aa2u-mark-rectangle-as-text’
-  - new homepage: http://www.gnuvola.org/software/aa2u/
+  - new homepage: https://www.gnuvola.org/software/aa2u/
 
 - 1.8 | 2014-05-21
   - new command: ‘aa2u-mark-as-text’
@@ -36,7 +36,7 @@ See the end for copying conditions.
   - ‘aa2u’ takes args BEG and END
 
 - 1.4 | 2014-01-14
-  - move to ELPA (from <http://www.gnuvola.org/software/j/aa2u/>)
+  - move to ELPA (from <https://www.gnuvola.org/software/j/aa2u/>)
   - change copyright to FSF
   - require 'cl-lib instead of 'cl
   - use ‘cl-flet’ and ‘cl-labels’
