@@ -1,9 +1,9 @@
 ;;; ascii-art-to-unicode.el --- a small artist adjunct -*- lexical-binding: t -*-
 
-;; Copyright (C) 2014-2020 Free Software Foundation, Inc.
+;; Copyright (C) 2014-2023 Free Software Foundation, Inc.
 
 ;; Author: Thien-Thi Nguyen <ttn@gnu.org>
-;; Maintainer: Thien-Thi Nguyen <ttn@gnu.org>
+;; Maintainer: emacs-devel@gnu.org
 ;; Version: 1.13
 ;; Keywords: ascii, unicode, box-drawing
 ;; URL: https://www.gnuvola.org/software/aa2u/
